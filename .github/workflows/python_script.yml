@@ -35,14 +35,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Set up Python and Cache dependancies
         uses: actions/setup-python@v4
         with:
           python-version: "3.9"
           cache: "pip" # caching pip dependencies
       - run: pip install -r requirements.txt
 
-      - name: Install dependencies
+      - name: Install dependencies if they are needed/changed
         run: pip install -r requirements.txt
 
       - name: Run connection test
