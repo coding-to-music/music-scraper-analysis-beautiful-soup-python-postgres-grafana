@@ -128,7 +128,7 @@ traitlets        : 5.9.0
 `neon-connect2.py` uses .env value `POSTGRES_URL`
 
 ```java
-python3 scrapers/neon-connect2.py
+python3 scrapers/neon-connect.py
 ```
 
 Output
