@@ -9,24 +9,24 @@ jobs:
   run_python_script:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python and Cache dependancies
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.9"
-        cache: "pip" # caching pip dependencies
-    - run: pip install -r requirements.txt
+      - name: Set up Python and Cache dependancies
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+          cache: "pip" # caching pip dependencies
+      - run: pip install -r requirements.txt
 
-    - name: Install dependencies if they are needed/changed
-      run: pip install -r requirements.txt
+      - name: Install dependencies if they are needed/changed
+        run: pip install -r requirements.txt
 
-    - name: Run connection test
-      env:
-        POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-      run: python scrapers/neon-connect.py
+      - name: Run connection test
+        env:
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: python scrapers/neon-connect.py
 #
 #
 # - name: Run scraper
