@@ -135,7 +135,7 @@ Output
 
 ```java
 Connection to PostgreSQL DB successful
-Query result: (datetime.date(2023, 6, 14),)
+Query result: (datetime.date(2023, 7, 20),)
 ```
 
 `neon-connect.py` uses .env value `POSTGRES_URL`
@@ -168,6 +168,6 @@ jupyter nbconvert --to markdown --execute scrapers/connect.ipynb
 Open the markdown output file `scrapers/connect.md` and preview the markdown
 
 ```
-Connection to PostgreSQL DB successful
-Query result: (datetime.date(2023, 6, 14),)
+[NbConvertApp] Converting notebook scrapers/connect.ipynb to markdown
+[NbConvertApp] Writing 1784 bytes to scrapers/connect.md
 ```
