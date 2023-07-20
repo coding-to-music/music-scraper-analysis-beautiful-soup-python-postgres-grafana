@@ -1,5 +1,3 @@
-name: Python Script
-
 # Since cron uses UTC, we need to convert the desired local time (6:30 AM EST to 9:30 PM EST) into UTC.
 # Here's a series of crontab statements that will run once at the 30 minutes past each hour within the specified time range:
 # 30 11 * * * your_command1    # 6:30 AM EST
@@ -31,36 +29,38 @@ name: Python Script
 #     - cron: "30 1-2 * * *"
 #     workflow_dispatch:
 
+name: Python Script
+
 jobs:
-  run_python_script:
-    runs-on: ubuntu-latest
+run_python_script:
+  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Python and Cache dependancies
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-          cache: "pip" # caching pip dependencies
-      - run: pip install -r requirements.txt
+    - name: Set up Python and Cache dependancies
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+        cache: "pip" # caching pip dependencies
+    - run: pip install -r requirements.txt
 
-      - name: Install dependencies if they are needed/changed
-        run: pip install -r requirements.txt
+    - name: Install dependencies if they are needed/changed
+      run: pip install -r requirements.txt
 
-      - name: Run connection test
-        env:
-          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-        run: python scrapers/neon-connect.py
+    - name: Run connection test
+      env:
+        POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+      run: python scrapers/neon-connect.py
 
-      # - name: Run scraper
-      #   env:
-      #     SCRAPE_URL: ${{ secrets.SCRAPE_URL }}
-      #     POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-      #   run: python scrapers/scraper.py
+    # - name: Run scraper
+    #   env:
+    #     SCRAPE_URL: ${{ secrets.SCRAPE_URL }}
+    #     POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+    #   run: python scrapers/scraper.py
 
-      # - name: Run updates of booleans and duration fields
-      #   env:
-      #     POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-      #   run: python scrapers/run-updates.py
+    # - name: Run updates of booleans and duration fields
+    #   env:
+    #     POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+    #   run: python scrapers/run-updates.py
