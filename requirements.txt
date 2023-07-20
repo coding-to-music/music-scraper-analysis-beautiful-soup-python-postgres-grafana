@@ -10,6 +10,7 @@ python-dotenv
 boto3
 pytz
 selenium
+webdriver-manager
 
 # dotenv
 
