@@ -22,13 +22,13 @@ name: Python Script
 #
 # only run at 30 minutes after midnight
 # "30 0 * * *"
+# - cron: "0 * * * *"
+# - cron: "30 11-23 * * *"
+# - cron: "30 0-3 * * *"
 
 on:
   schedule:
     - cron: "30 1-2 * * *"
-      # - cron: "0 * * * *"
-      # - cron: "30 11-23 * * *"
-      # - cron: "30 0-3 * * *"
     workflow_dispatch:
 
 jobs:
