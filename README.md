@@ -96,6 +96,78 @@ When you deploy your program, if the deployed environment is a physical server, 
 pip install -r requirements.txt -t ./.
 ```
 
+## Install Google Chrome
+
+```java
+sudo apt update
+sudo apt install google-chrome-stable
+```
+
+Gives this message:
+
+```
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Package google-chrome-stable is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+E: Package 'google-chrome-stable' has no installation candidate
+```
+
+Go to this site to install Chromium
+
+```
+https://launchpad.net/ubuntu/+source/chromium-browser
+```
+
+Or use the software tool in the UI to install Chromium
+
+Verify it is installed
+
+```
+which chromium
+```
+
+Output
+
+```
+/snap/bin/chromium
+```
+
+## how to start using ChromeDriver for testing your website on desktop (Windows/Mac/Linux).
+
+```
+https://sites.google.com/chromium.org/driver/getting-started?authuser=0
+```
+
+Python
+
+```
+import time
+
+from selenium import webdriver
+
+
+
+driver = webdriver.Chrome('/path/to/chromedriver')  # Optional argument, if not specified will search path.
+
+driver.get('http://www.google.com/');
+
+time.sleep(5) # Let the user actually see something!
+
+search_box = driver.find_element_by_name('q')
+
+search_box.send_keys('ChromeDriver')
+
+search_box.submit()
+
+time.sleep(5) # Let the user actually see something!
+
+driver.quit()
+```
+
 ## Install Jupyter and associated packages
 
 ```java
