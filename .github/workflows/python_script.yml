@@ -22,7 +22,7 @@ name: Python Script
 
 #
 # only run at 30 minutes after midnight
-# - cron: "30 0 * * *"
+# "30 0 * * *"
 
 on:
   schedule:
