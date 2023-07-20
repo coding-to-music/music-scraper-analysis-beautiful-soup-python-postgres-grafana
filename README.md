@@ -96,6 +96,20 @@ When you deploy your program, if the deployed environment is a physical server, 
 pip install -r requirements.txt -t ./.
 ```
 
+## Verify selenium
+
+Install via requirements.txt
+
+```
+# via command line:
+
+pip show selenium
+
+# via Python Jupyter Notebook
+
+!pip show selenium
+```
+
 ## Install Google Chrome
 
 ```java
@@ -164,7 +178,11 @@ rm chromedriver_linux64.zip
 chmod +x chromedriver
 
 sudo mv chromedriver /usr/local/bin
+```
 
+Check version and location
+
+```
 which chromedriver
 
 chromedriver --version
