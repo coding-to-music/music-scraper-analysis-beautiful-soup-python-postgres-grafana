@@ -88,7 +88,7 @@ Then install your dependencies with pip and they will be installed in the virtua
 pip install -r requirements.txt
 ```
 
-Then any time you return to the project, run source env/bin/activate again so that the dependencies can be found.
+Then any time you return to the project, run `source env/bin/activate` again so that the dependencies can be found.
 
 When you deploy your program, if the deployed environment is a physical server, or a virtual machine, you can follow the same process on the production machine. If the deployment environment is one of a few serverless environments (e.g. GCP App Engine), supplying a requirements.txt file will be sufficient. For some other serverless environments (e.g. AWS Lambda) the dependencies will need to be included in the root directory of the project. In that case, you should use
 
@@ -134,6 +134,46 @@ Output
 
 ```
 /snap/bin/chromium
+```
+
+Check chromium version
+
+```
+chromium --version
+```
+
+```
+Chromium 114.0.5735.198 snap
+```
+
+## Install ChromeDriver
+
+https://sites.google.com/chromium.org/driver/downloads?authuser=0
+
+ChromeDriver 114.0.5735.90
+
+https://chromedriver.storage.googleapis.com/index.html?path=114.0.5735.90/
+
+```
+wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+
+unzip chromedriver_linux64.zip
+
+rm chromedriver_linux64.zip
+
+chmod +x chromedriver
+
+sudo mv chromedriver /usr/local/bin
+
+which chromedriver
+
+chromedriver --version
+```
+
+```
+/usr/local/bin/chromedriver
+
+ChromeDriver 114.0.5735.90 (386bc09e8f4f2e025eddae123f36f6263096ae49-refs/branch-heads/5735@{#1052})
 ```
 
 ## how to start using ChromeDriver for testing your website on desktop (Windows/Mac/Linux).
