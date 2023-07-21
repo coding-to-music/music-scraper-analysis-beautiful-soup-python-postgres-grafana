@@ -18,3 +18,20 @@ CREATE TABLE song_detail (
   play_dt TIMESTAMP,
   PRIMARY KEY (song_id)
 );
+
+-- ArtistName -- SongName
+-- AlbumImage
+-- Album
+-- Avg Rating
+-- Total ratings
+-- Rating Distribution
+-- Release Year
+-- Length
+-- Plays (last 30 days)
+-- Lyrics
+
+-- Links: ShareFB, Tweet, wiki, website, search, amg
+-- Links: Amazon
+-- Links: iTunes
+
+-- Comments
