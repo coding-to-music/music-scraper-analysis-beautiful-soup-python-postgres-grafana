@@ -19,7 +19,7 @@ const scrapeHackerNews = async () => {
     const postElements = document.querySelectorAll(".athing");
 
     postElements.forEach((element) => {
-      console.log(element); // Debug: Log each element
+      //   console.log(element); // Debug: Log each element
 
       const titleElement = element.querySelector(".storylink");
       const title = titleElement ? titleElement.textContent : "";
@@ -29,6 +29,9 @@ const scrapeHackerNews = async () => {
       const authorElement = element.nextElementSibling.querySelector(".hnuser");
       const author = authorElement ? authorElement.textContent : "";
 
+      console.log(title);
+      console.log(url);
+      console.log(author);
       posts.push({ title, url, author });
     });
 
@@ -38,3 +41,13 @@ const scrapeHackerNews = async () => {
   await browser.close();
   return topPosts;
 };
+console.log("after loop");
+
+scrapeHackerNews()
+  .then((topPosts) => {
+    console.log("Top posts on Hacker News:");
+    console.log(topPosts);
+  })
+  .catch((err) => {
+    console.error("Error while scraping:", err);
+  });

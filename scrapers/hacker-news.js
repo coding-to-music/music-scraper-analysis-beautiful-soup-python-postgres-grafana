@@ -24,14 +24,26 @@ const scrapeHackerNews = async () => {
       const title = titleElement ? titleElement.textContent : "";
 
       const url = titleElement ? titleElement.href : "";
+      const link = "";
+
+      try {
+        title = element.querySelector(".storylink").innerText;
+        if (title != "") {
+          // first row
+          link = element.querySelector(".storylink").href;
+
+          //   postItems.push({ title: title, link: link });
+        }
+      } catch (error) {}
 
       const authorElement = element.nextElementSibling.querySelector(".hnuser");
       const author = authorElement ? authorElement.textContent : "";
 
       console.log(title);
       console.log(url);
+      console.log(link);
       console.log(author);
-      posts.push({ title, url, author });
+      posts.push({ title, url, author, link });
     });
 
     return posts;
