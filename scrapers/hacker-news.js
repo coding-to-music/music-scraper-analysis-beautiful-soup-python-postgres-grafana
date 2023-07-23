@@ -1,13 +1,14 @@
 const puppeteer = require("puppeteer");
 
 const scrapeHackerNews = async () => {
-  //   const browser = await puppeteer.launch({ headless: true });
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   await page.goto("https://news.ycombinator.com/", {
     waitUntil: "domcontentloaded",
   });
+
+  await page.waitForSelector(".athing");
 
   const topPosts = await page.evaluate(() => {
     const posts = [];
