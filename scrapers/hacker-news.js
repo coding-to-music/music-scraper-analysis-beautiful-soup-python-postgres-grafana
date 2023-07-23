@@ -1,7 +1,8 @@
 const puppeteer = require("puppeteer");
 
 const scrapeHackerNews = async () => {
-  const browser = await puppeteer.launch({ headless: true });
+  //   const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   await page.goto("https://news.ycombinator.com/", {
@@ -10,11 +11,15 @@ const scrapeHackerNews = async () => {
 
   await page.waitForSelector(".athing");
 
+  console.log("before loop");
+
   const topPosts = await page.evaluate(() => {
     const posts = [];
     const postElements = document.querySelectorAll(".athing");
+    console.log(postElements);
 
     postElements.forEach((element) => {
+      console.log(element);
       const titleElement = element.querySelector(".storylink");
       const title = titleElement ? titleElement.textContent : "";
 
@@ -23,6 +28,9 @@ const scrapeHackerNews = async () => {
       const authorElement = element.nextElementSibling.querySelector(".hnuser");
       const author = authorElement ? authorElement.textContent : "";
 
+      console.log(title);
+      console.log(url);
+      console.log(author);
       posts.push({ title, url, author });
     });
 
@@ -32,6 +40,8 @@ const scrapeHackerNews = async () => {
   await browser.close();
   return topPosts;
 };
+
+console.log("after loop");
 
 scrapeHackerNews()
   .then((topPosts) => {
