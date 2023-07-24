@@ -11,6 +11,7 @@ boto3
 pytz
 selenium
 webdriver-manager
+lxml
 
 # dotenv
 
