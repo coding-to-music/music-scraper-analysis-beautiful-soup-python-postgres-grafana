@@ -31,26 +31,38 @@ def scrape_the_page(page_number):
     soup = BeautifulSoup(response.text, 'html.parser')
     # print(soup)
 
-    athing_elements = soup.find_all('tr', class_='athing')
+    posts = soup.find_all('tr', class_='athing')
 
-    print(len(athing_elements))
+    print(len(posts))
 
-    # Print the results
-    # for element in athing_elements:
-    #     print(element.prettify())  # Use prettify() to display the element nicely formatted
-    #     print("------------")
-    
-    link_element = element.find('a', class_='storylink')
-    if link_element:
-        print("Link:", link_element['href'])
+    # Check if there's at least one post in the list
+    if posts:
+        first_post = posts[0]  # Access the first post by its index (0)
+        print(first_post.prettify())  # Printing the first post with proper formatting
+    else:
+        print("No posts found.")
 
-    # links = soup.select('.storylink')
-    # print(links)
-    # sub_text = soup.select('.subtext')
+    # Extract the "rank" from the post
+    rank = first_post.find('span', class_='rank').get_text().strip()
+
+    # Extract the "title_text" from the post
+    # title_text = posts.find('span', class_='titleline').a.get_text().strip()
+
+    # Extract the "url" from the post
+    url = posts.find('span', class_='titleline').a['href']
+
+    # Print the extracted information
+    print("Rank:", rank)
+    print("Title:", title_text)
+    print("URL:", url)
+
+    links = soup.select('.storylink')
+    print(links)
+    sub_text = soup.select('.subtext')
 
     return create_custom_hacker_news(links, sub_text)
 
 if __name__ == "__main__":
     custom_hn_lists = scrape_the_page(1)
-    pprint.pprint(custom_hn_lists)
+    # pprint.pprint(custom_hn_lists)
 
