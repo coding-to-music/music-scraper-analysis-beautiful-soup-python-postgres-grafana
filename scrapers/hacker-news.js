@@ -67,6 +67,8 @@ scrapeHackerNews()
 
 // const puppeteer = require('puppeteer');
 
+// headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'}
+
 // puppeteer.launch({ headless: true, args: ['--user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"] }).then(async)
 
 // const page = await puppeteer.Browser.newPage();
