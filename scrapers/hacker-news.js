@@ -33,6 +33,7 @@ const scrapeHackerNews = async () => {
           link = element.querySelector(".storylink").href;
 
           //   postItems.push({ title: title, link: link });
+          //
         }
       } catch (error) {}
 
