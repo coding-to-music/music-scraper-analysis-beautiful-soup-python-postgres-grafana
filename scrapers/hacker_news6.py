@@ -52,11 +52,11 @@ def scrape_the_page(page_number):
             .strip()
         )  # Remove line breaks from the title
 
-        title_text = (
-            title_element.get_text().strip() if title_element else "No Title Found"
-        )
+        # title_text = (
+        #     title_element.get_text().strip() if title_element else "No Title Found"
+        # )
 
-        print(title_text)
+        # print(title_text)
 
         # Extract the "url" from the post
         url = title_element["href"] if title_element else "#"
@@ -64,8 +64,8 @@ def scrape_the_page(page_number):
         hacker_news_data.append({"rank": rank, "title": title_text, "url": url})
 
     # Print the extracted information
-    pprint.pprint(hacker_news_data, width=99)
     # pprint.pprint(hacker_news_data)
+    pprint.pprint(hacker_news_data, width=99)
 
     # print(hacker_news_data)
 
