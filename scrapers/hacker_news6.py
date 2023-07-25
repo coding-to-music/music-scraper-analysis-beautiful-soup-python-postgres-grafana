@@ -66,6 +66,8 @@ def scrape_the_page(page_number):
     # Print the extracted information
     # pprint.pprint(hacker_news_data)
 
+    print(hacker_news_data)
+
     return hacker_news_data
 
 
