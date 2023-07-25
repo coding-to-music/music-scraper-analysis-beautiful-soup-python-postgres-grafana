@@ -13,6 +13,8 @@ junk-2.csv
 *.old
 *.old*
 
+.vscode/
+
 package-lock.json
 
 node_modules/
