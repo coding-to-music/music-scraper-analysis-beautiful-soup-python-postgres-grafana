@@ -29,7 +29,7 @@ def scrape_the_page(page_number):
     print(response)
     soup = BeautifulSoup(response.text, "html.parser")
 
-    posts = soup.find_all("tr", class_="athing")
+    posts = soup.select(".athing")
 
     print(len(posts))
 
@@ -41,11 +41,22 @@ def scrape_the_page(page_number):
         # Extract the "rank" from the post
         rank = post.find("span", class_="rank").get_text().strip()
 
-        # Check if the "storylink" element exists before accessing the title
-        title_element = post.find("a", class_="storylink")
+        # Check if the title is available
+        title_element = post.select_one(".title a")
+
+        # title_text = (
+        #     title_element.get_text().strip() if title_element else "No Title Found"
+        # )
+
         title_text = (
-            title_element.get_text().strip() if title_element else "No Title Found"
-        )
+            post.find("span", class_="titleline")
+            .a.get_text()
+            .strip()
+            .replace("\n", " ")
+            .strip()
+        )  # Remove line breaks from the title
+
+        print(title_text)
 
         # Extract the "url" from the post
         url = title_element["href"] if title_element else "#"
@@ -53,13 +64,9 @@ def scrape_the_page(page_number):
         hacker_news_data.append({"rank": rank, "title": title_text, "url": url})
 
     # Print the extracted information
-    pprint.pprint(hacker_news_data)
+    # pprint.pprint(hacker_news_data)
 
-    links = soup.select(".storylink")
-    print(links)
-    sub_text = soup.select(".subtext")
-
-    return create_custom_hacker_news(links, sub_text)
+    return hacker_news_data
 
 
 if __name__ == "__main__":
