@@ -44,10 +44,6 @@ def scrape_the_page(page_number):
         # Check if the title is available
         title_element = post.select_one(".title a")
 
-        # title_text = (
-        #     title_element.get_text().strip() if title_element else "No Title Found"
-        # )
-
         title_text = (
             post.find("span", class_="titleline")
             .a.get_text()
@@ -55,6 +51,10 @@ def scrape_the_page(page_number):
             .replace("\n", " ")
             .strip()
         )  # Remove line breaks from the title
+
+        title_text = (
+            title_element.get_text().strip() if title_element else "No Title Found"
+        )
 
         print(title_text)
 
@@ -64,9 +64,10 @@ def scrape_the_page(page_number):
         hacker_news_data.append({"rank": rank, "title": title_text, "url": url})
 
     # Print the extracted information
+    pprint.pprint(hacker_news_data, width=99)
     # pprint.pprint(hacker_news_data)
 
-    print(hacker_news_data)
+    # print(hacker_news_data)
 
     return hacker_news_data
 
