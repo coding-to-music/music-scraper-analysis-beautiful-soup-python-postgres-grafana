@@ -12,6 +12,7 @@ pytz
 selenium
 webdriver-manager
 lxml
+newspaper3k
 
 # dotenv
 

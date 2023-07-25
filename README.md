@@ -301,3 +301,58 @@ Open the markdown output file `scrapers/connect.md` and preview the markdown
 [NbConvertApp] Converting notebook scrapers/connect.ipynb to markdown
 [NbConvertApp] Writing 1784 bytes to scrapers/connect.md
 ```
+
+## Newspaper3k
+
+https://github.com/codelucas/newspaper
+
+```
+>>> import newspaper
+
+>>> cnn_paper = newspaper.build('http://cnn.com')
+
+>>> for article in cnn_paper.articles:
+>>>     print(article.url)
+http://www.cnn.com/2013/11/27/justice/tucson-arizona-captive-girls/
+http://www.cnn.com/2013/12/11/us/texas-teen-dwi-wreck/index.html
+...
+
+>>> for category in cnn_paper.category_urls():
+>>>     print(category)
+
+http://lifestyle.cnn.com
+http://cnn.com/world
+http://tech.cnn.com
+...
+
+>>> cnn_article = cnn_paper.articles[0]
+>>> cnn_article.download()
+>>> cnn_article.parse()
+>>> cnn_article.nlp()
+```
+
+Zerohedge
+
+```
+>>> import newspaper
+
+>>> zh_paper = newspaper.build('https://zerohedge.com')
+
+>>> for article in zh_paper.articles:
+>>>     print(article.url)
+
+for article in zh_paper.articles:
+    print(article.url)
+
+...
+
+>>> for category in zh_paper.category_urls():
+>>>     print(category)
+
+...
+
+>>> zh_article = zh_paper.articles[0]
+>>> zh_article.download()
+>>> zh_article.parse()
+>>> zh_article.nlp()
+```
